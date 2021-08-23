@@ -1,0 +1,17 @@
+#p1 {
+    color: green;
+}
+#p2, #p3 {
+    color: blue;
+}
+p #ultima_linha{
+	color: red;
+}
+
+.pequena{
+	font-size: 14px
+}
+
+.grande{
+	font-size: 24px
+}
