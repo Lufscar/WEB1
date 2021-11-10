@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Celsius2Farenheint</title>
+<meta charset="UTF-8">
+</head>
+<body>
+
+		<form action="CtoF_Spring" method="POST">
+
+			<h1 th:text="#{new.text}"></h1>
+			<input th:text="#{min.text}" type="text" name="minVal"><br>
+			<input th:text="#{max.text}" type="text" name="maxVal"><br>
+			<input th:text="#{inc.text}" type="text" name="incVal"><br>
+			<input type="submit" name="enviar" th:value="#{button.text}" />
+		</form>
+		<h3 th:text="#{ok.text}"></h3>
+
+		<div style="display: flex">
+			<table border=1>
+				<tr>
+					<th>Celsius</th>
+				</tr>
+				<tr th:each="celsius:${celsius}">
+					<td><span th:text="${celsius}">celsius</span></td>
+				</tr>
+			</table>
+			<table border=1>
+				<tr>
+					<th>Fahrenheit</th>
+				</tr>
+				<tr th:each="fahr:${fahr}">
+					<td><span th:text="${fahr}">fahr</span></td>
+				</tr>
+			</table>
+		</div>
+</body>
+</html>
