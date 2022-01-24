@@ -25,14 +25,6 @@ public class ClienteRSApplication {
 	public CommandLineRunner run(IRestClientService service) throws Exception {
 		return args -> {
 			
-			List<Teste> ts = service.get();
-			for (Teste c : ts) {
-				log.info(c.toString());
-			}
-			log.info("-----------------------------------");
-			log.info("Numero de Testes: " + ts.size());
-			log.info("-----------------------------------");
-			//{"body":"Teste Body","title":"Teste Title","userId":1}
 			Teste t = new Teste("Teste Body", "Teste Title", (long) 1);
 			log.info("-----------------------------------");
 			log.info("save()");
@@ -42,14 +34,16 @@ public class ClienteRSApplication {
 			log.info("-----------------------------------");
 			log.info("getTestes()");
 			log.info("-----------------------------------");
-			
+			List<Teste> ts = service.get();
+			for (Teste c : ts) {
+				log.info(c.toString());
+			}
 			log.info("-----------------------------------");
 			log.info("Numero de Testes: " + ts.size());
 			log.info("-----------------------------------");
 			log.info("getTeste(" + id + ")");
 			log.info("-----------------------------------");
 			t = service.get(id);
-			
 			for (Teste c : ts) {
 				log.info(c.toString());
 			}
@@ -72,7 +66,6 @@ public class ClienteRSApplication {
 			ts = service.get();
 			log.info("Numero de Testes: " + ts.size());
 			log.info("-----------------------------------");
-			
 		};
 	}
 }

@@ -38,8 +38,6 @@ public class RestClientService implements IRestClientService {
 		String url = "http://jsonplaceholder.typicode.com/posts";
 		ResponseEntity<Teste> res = restTemplate.postForEntity(url, entity, Teste.class);
 		Teste t1 = res.getBody();
-
-		System.out.println("\n                                         Criou !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
 		return t1.getUserId();
 	}
 	
@@ -47,16 +45,12 @@ public class RestClientService implements IRestClientService {
 	public List<Teste> get() {
 		String url = "http://jsonplaceholder.typicode.com/posts";
 		Teste[] t = restTemplate.getForObject(url, Teste[].class);
-		
-		System.out.println("\n                                         Retornou uma lista !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
 		return Arrays.asList(t);
 	}
 	
 	@Override
 	public Teste get(Long id) {
 		String url = "http://jsonplaceholder.typicode.com/posts/" + id;
-		
-		System.out.println("\n                                         Retornou um objeto !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
 		return restTemplate.getForObject(url, Teste.class);
 	}
 	
@@ -67,8 +61,6 @@ public class RestClientService implements IRestClientService {
 		HttpEntity<Teste> entity = new HttpEntity<Teste>(t, headers);
 		String url = "http://jsonplaceholder.typicode.com/posts/" + t.getUserId();
 		ResponseEntity<Teste> res = restTemplate.exchange(url, HttpMethod.PUT, entity, Teste.class);
-		
-		System.out.println("\n                                         Atualizou !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
 		return res.getStatusCode() == HttpStatus.OK;
 	}
 	
@@ -77,11 +69,8 @@ public class RestClientService implements IRestClientService {
 		try {
 			String url = "http://jsonplaceholder.typicode.com/posts/" + id;
 			restTemplate.delete(url);
-			
-			System.out.println("\n                                         Deletou !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
 			return true;
 		} catch (RestClientException e) {
-			System.out.println("\n                                         NÃO deletou !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
 			return false;
 		}
 	}
